@@ -1,0 +1,22 @@
+<table class = "table table-bordered" id="current_tweets">
+<thead>
+  <th>
+    <%= tweet.username %>
+    <%= tweet.handle %>
+    <%= tweet.created_at %>
+    <% if user_signed_in? && current_user.id == tweet.user_id %>
+    <small><%= link_to '(delete)', tweet_path(tweet),
+                                  :data => {:confirm => 'Are you sure?',
+                                  :method => 'delete' } %></small>
+    <small><%= link_to '(edit)', edit_tweet_path(tweet) %></small>
+    <% end %>
+  </th>
+</thead>
+<tbody>
+  <tr>
+    <td>
+      <%= tweet.tweet_text %>
+    </td>
+  </tr>
+</tbody>
+</table>

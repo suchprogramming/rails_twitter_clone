@@ -1,0 +1,16 @@
+<% if user_signed_in? %>
+  <h4>Hello <%= current_user.handle %>!</h4>
+<% end %>
+
+<% if @tweets.any? %>
+  <h5>Current Tweets</h5>
+  <div id="current_tweets">
+    <%= render @tweets %>
+  </div>
+<% else %>
+  <h5>No Activity!</h5>
+<% end %>
+
+<% if user_signed_in? %>
+  <%= link_to "Tweet Stuff!", new_tweet_path, class: 'btn btn-info btn-md', id: "new_tweet_link", remote: true %>
+<% end %>
